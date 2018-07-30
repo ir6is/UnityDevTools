@@ -8,12 +8,12 @@ namespace UnityDevTools.Console
 {
     public class ConsoleOpenController : MonoBehaviour
     {
+        public event Action<string> CommandsHendlers; 
 
         /// <summary>
         /// Max lenght _contentText.text view
         /// </summary>
-        public const int MaxCharAmount = 16000;
-        public event Action<string> CommandsHendlers;
+        private const int MaxCharAmount = 16000;
 
         [Tooltip("Logs settings")]
         [SerializeField] private LogViewSettings[] _logViewSettings = new LogViewSettings[1];
@@ -21,12 +21,14 @@ namespace UnityDevTools.Console
         [Tooltip("Ui content viewer when console open")]
         [SerializeField] private Text _uiContentTextOpen;
         [SerializeField] private InputField _executeInputField;
+        [SerializeField] private Toggle _autoScrollTogle;
 
-        [SerializeField] private Button _executeBtn, _clearLog;
+
+       [SerializeField] private Button _executeBtn, _clearLog;
 
         private Queue<string> _logDebugMessages;
         private StringBuilder _messageBuilder;
-
+        private ScrollRect _scrollRect;
         public void Initialize()
         {
             _logDebugMessages = new Queue<string>();
@@ -34,11 +36,14 @@ namespace UnityDevTools.Console
             _messageBuilder.Capacity = MaxCharAmount;
             Application.logMessageReceived += OnLogReceived;
 
+            _scrollRect = GetComponentInChildren<ScrollRect>();
+
             _executeBtn.onClick.AddListener(OnExecuteClick);
             _clearLog.onClick.AddListener(OnClearLogClick);
+            OnClearLogClick();
         }
 
-        #region BtnHandlers
+        #region  HandlersUi 
         private void OnClearLogClick()
         {
             _uiContentTextOpen.text = string.Empty;
@@ -84,20 +89,20 @@ namespace UnityDevTools.Console
                             _messageBuilder.Append(item);
                         }
                         else
-                        {
-                            break;
-                        }
+                        {  break; }
                     }
 
                     for (int i = 0; i < _logDebugMessages.Count - unvisibelMessageCount; i++)
-                    {
-                        _logDebugMessages.Dequeue();
-                    }
+                    { _logDebugMessages.Dequeue(); }
 
                     _uiContentTextOpen.text = _messageBuilder.ToString();
+
+                    if (_autoScrollTogle.isOn)
+                    {  _scrollRect.verticalNormalizedPosition = 0; }
                 }
             }
         }
+
         [Serializable]
         private class LogViewSettings
         {

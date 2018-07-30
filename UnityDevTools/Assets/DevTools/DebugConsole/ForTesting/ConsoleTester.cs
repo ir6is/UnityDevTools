@@ -9,8 +9,8 @@ public class ConsoleTester : MonoBehaviour {
 
     string debugString = "";
 	void Start () {
-        StartCoroutine(PrintDebug()); 
-
+        StartCoroutine(PrintDebug());
+      var  vers = new Version(); 
         Console.Instance.ConsoleClose.AddStringView("debugString", debugString);
         Console.Instance.ConsoleOpen.CommandsHendlers += OnExecuteListener;
     }
@@ -27,7 +27,7 @@ public class ConsoleTester : MonoBehaviour {
             _debugCounter++;
             debugString = _debugCounter.ToString();
 
-            print(_debugCounter.ToString());
+          // print(_debugCounter.ToString());
         }
     }
 
@@ -38,4 +38,11 @@ public class ConsoleTester : MonoBehaviour {
             Console.Instance.ConsoleClose.AddStringView("DebugExecute", debugString); 
         }
     }
+
+    public void BtnCliCktest()
+    {
+        print("Click");
+    }
 }
+
+ 
