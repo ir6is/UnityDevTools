@@ -1,90 +1,96 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using System;
-using System.IO;
-using System.Text;
 
 namespace UnityDevTools.Console
 {
-    public class Console : MonoBehaviour
-    {
-        public const string ResourcePath = "Console";
+	public class Console : MonoBehaviour
+	{
 
-        public ConsoleCloseController ConsoleClose { get; private set; }
-        public ConsoleOpenController ConsoleOpen { get; private set; }
-        private ConsoleHiddenController _consoleHidden;
-        private static Console _instance;
+		#region data
 
+		private const string ResourcePath = "Console";
+		private static Console _instance;
+		[SerializeField] private Button _openBtn, _closeLongConsoleBtn, _hideBtn, _closeConsole, _showConsoleBtn;
 
-        [SerializeField] private Button _openBtn, _closeBtn, _hideBtn;
-        private void Awake()
-        {
-            if (_instance == null)
-            {
-                _instance = this;
-                DontDestroyOnLoad(_instance.gameObject);
-            }
-            else
-            {
-                DestroyImmediate(gameObject);
-                return;
-            }
-            ConsoleClose = GetComponentInChildren<ConsoleCloseController>(true);
-            ConsoleClose.Initialize();
+		#endregion
 
-            ConsoleOpen = GetComponentInChildren<ConsoleOpenController>(true);
-            ConsoleOpen.Initialize();
-            ConsoleOpen.CommandsHendlers += HubScene.LoadHubScene;
-            ConsoleOpen.CommandsHendlers += Version.PrintVersion;
+		#region interface
 
-            _consoleHidden = GetComponentInChildren<ConsoleHiddenController>(true);
-            _consoleHidden.Initialize(OnUnhide);
+		public static Console Instance
+		{
+			get
+			{
+				if (_instance == null)
+				{
+					_instance = Instantiate(Resources.Load<Console>(ResourcePath));
+					_instance.name = _instance.name.Replace("(Clone)", "");
+				}
 
-            _openBtn.onClick.AddListener(OnBtnOpenClick);
-            _closeBtn.onClick.AddListener(OnBtnCloseClick);
-            _hideBtn.onClick.AddListener(OnBtnHideClick);
+				return _instance;
+			}
+		}
 
+		public ShortConsole ConsoleClose { get; private set; }
+		public LongConsole ConsoleOpen { get; private set; }
 
+		#endregion
 
-            OnBtnHideClick();
-        }
-        private void OnUnhide()
-        {
-            OnBtnCloseClick();
-        } 
+		#region monoBehaviour
 
-        #region HandlersUi
-        private void OnBtnCloseClick()
-        {
-            ConsoleOpen.gameObject.SetActive(false);
-            ConsoleClose.gameObject.SetActive(true);
-            _consoleHidden.gameObject.SetActive(false);
-        } 
-        private void OnBtnOpenClick()
-        {
-            ConsoleOpen.gameObject.SetActive(true);
-            ConsoleClose.gameObject.SetActive(false);
-        } 
-        private void OnBtnHideClick()
-        {
-            _consoleHidden.gameObject.SetActive(true);
-            ConsoleClose.gameObject.SetActive(false);
-        } 
-        #endregion
+		private void Awake()
+		{
+			if (_instance == null)
+			{
+				_instance = this;
+				DontDestroyOnLoad(_instance.gameObject);
+			}
+			else
+			{
+				DestroyImmediate(gameObject);
+				return;
+			}
+			ConsoleClose = GetComponentInChildren<ShortConsole>(true);
+			ConsoleClose.Initialize();
 
-        public static Console Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = Instantiate(Resources.Load<Console>(ResourcePath));
-                    _instance.name = _instance.name.Replace("(Clone)", "");
-                }
-                return _instance;
-            }
-        }
-    }
+			ConsoleOpen = GetComponentInChildren<LongConsole>(true);
+			ConsoleOpen.Initialize();
+			ConsoleOpen.CommandRaised += HubScene.LoadHubScene;
+			ConsoleOpen.CommandRaised += Version.PrintVersion;
+
+			_openBtn.onClick.AddListener(() =>
+			{
+				ConsoleOpen.gameObject.SetActive(true);
+				ConsoleClose.gameObject.SetActive(false);
+			});
+
+			_closeLongConsoleBtn.onClick.AddListener(() =>
+			{
+				ConsoleOpen.gameObject.SetActive(false);
+				ConsoleClose.gameObject.SetActive(true);
+			});
+
+			_hideBtn.onClick.AddListener(() =>
+			{
+				ConsoleClose.gameObject.SetActive(false);
+				_showConsoleBtn.gameObject.SetActive(true);
+			});
+
+			_closeConsole.onClick.AddListener(() =>
+			{
+				ConsoleClose.gameObject.SetActive(false);
+			});
+
+			_showConsoleBtn.onClick.AddListener(() =>
+			{
+				ConsoleClose.gameObject.SetActive(true);
+				_showConsoleBtn.gameObject.SetActive(false);
+			});
+		}
+
+		#endregion
+
+		#region interface
+
+		#endregion
+	}
 }

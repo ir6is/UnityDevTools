@@ -28,7 +28,7 @@ namespace UnityDevTools.Console
                 curBtn.GetComponentInChildren<Text>().text = (scene);
             }
         } 
-        public static void LoadHubScene(string command)
+        public static void LoadHubScene(object s,string command)
         {
             if (command == HubSceneCommand)
             {

@@ -10,9 +10,9 @@ public class ConsoleTester : MonoBehaviour {
     string debugString = "";
 	void Start () {
         StartCoroutine(PrintDebug());
-      var  vers = new Version(); 
+
         Console.Instance.ConsoleClose.AddStringView("debugString", debugString);
-        Console.Instance.ConsoleOpen.CommandsHendlers += OnExecuteListener;
+        Console.Instance.ConsoleOpen.CommandRaised += OnExecuteListener;
     }
 	
 	// Update is called once per frame
@@ -27,15 +27,15 @@ public class ConsoleTester : MonoBehaviour {
             _debugCounter++;
             debugString = _debugCounter.ToString();
 
-          // print(_debugCounter.ToString());
+          print(_debugCounter.ToString());
         }
     }
 
-    private void OnExecuteListener(string s)
+    private void OnExecuteListener(object d,string s)
     {
         if (s == "s")
         {
-            Console.Instance.ConsoleClose.AddStringView("DebugExecute", debugString); 
+            Console.Instance.ConsoleClose.AddStringView("DebugExecute", Time.time.ToString()); 
         }
     }
 

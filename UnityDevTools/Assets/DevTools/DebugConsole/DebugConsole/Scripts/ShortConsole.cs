@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace UnityDevTools.Console
 {
-    public class ConsoleCloseController : MonoBehaviour
+    public class ShortConsole : MonoBehaviour
     {
         [Tooltip("Ui content viewer when content close")]
         [SerializeField] private Text _uiContentTextClose;
@@ -60,7 +60,7 @@ namespace UnityDevTools.Console
 
 
         /// <summary>
-        /// Add string which been visualising in close console
+        /// Add string which been visualising in close console, if key exist, value will update.
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
