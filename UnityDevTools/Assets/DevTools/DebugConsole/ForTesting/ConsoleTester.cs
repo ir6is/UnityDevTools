@@ -11,8 +11,8 @@ public class ConsoleTester : MonoBehaviour {
 	void Start () {
         StartCoroutine(PrintDebug());
 
-        Console.Instance.ConsoleClose.AddStringView("debugString", debugString);
-        Console.Instance.ConsoleOpen.CommandRaised += OnExecuteListener;
+        Console.Instance.ShortConsole.AddStringView("debugString", debugString);
+        Console.Instance.FullScreenConsole.CommandRaised += OnExecuteListener;
     }
 	
 	// Update is called once per frame
@@ -35,7 +35,7 @@ public class ConsoleTester : MonoBehaviour {
     {
         if (s == "s")
         {
-            Console.Instance.ConsoleClose.AddStringView("DebugExecute", Time.time.ToString()); 
+            Console.Instance.ShortConsole.AddStringView("DebugExecute", Time.time.ToString()); 
         }
     }
 

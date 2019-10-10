@@ -9,12 +9,13 @@ namespace UnityDevTools.Console
     public class ShortConsole : MonoBehaviour
     {
         [Tooltip("Ui content viewer when content close")]
-        [SerializeField] private Text _uiContentTextClose;
-
+        [SerializeField]
+        private Text _uiContentTextClose;
         [Tooltip("with how many frames to take the average")]
-        [SerializeField] private int _maxFpsBuferSize = 20;
-
-        [SerializeField] private Button _clearBtn;
+        [SerializeField]
+        private int _maxFpsBuferSize = 20;
+        [SerializeField]
+        private Button _clearBtn;
 
         private Queue<int> _FPSBufer;
         private StringBuilder _messageBuilder;
@@ -94,7 +95,6 @@ namespace UnityDevTools.Console
             _keyAndValueView.Clear();
             _uiContentTextClose.text = string.Empty;
         }
-
 
         private void ShowCalculatedFps()
         {

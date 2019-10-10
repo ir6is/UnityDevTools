@@ -90,7 +90,7 @@ namespace UnityDevTools.Console
 					if (currLogViewSettings.ShowStack)
 					{
 						newMessage += string.Format("<size={0}><color=#{1}>------\n{2}------\n</color></size>",
-							_uiContentTextOpen.fontSize * 0.75f,
+							_uiContentTextOpen.fontSize * 0.5f,
 							ColorUtility.ToHtmlStringRGB(currLogViewSettings.TextColor), stackTrace);
 					}
 
