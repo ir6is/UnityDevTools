@@ -1,11 +1,7 @@
-﻿using UnityDevTools.DependencyInjection;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityUnityDevTools.DependencyInjection;
+﻿using UnityUnityDevTools.DependencyInjection;
 using UnityEngine;
 
-namespace YourNamespace
+namespace UnityDevTools.Ui.Example
 {
     /// <summary>
     /// TestUnityDevTools.DependencyInjection.

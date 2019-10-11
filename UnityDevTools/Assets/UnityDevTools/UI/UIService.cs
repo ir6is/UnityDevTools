@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityUnityDevTools.DependencyInjection;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace UnityDevTools.DependencyInjection
+namespace UnityDevTools.Ui
 {
     /// <summary>
     /// UIManager.
     /// </summary>
-    public class UIManager : MonoBehaviour
+    public class UIService : MonoBehaviour
     {
         #region data
 

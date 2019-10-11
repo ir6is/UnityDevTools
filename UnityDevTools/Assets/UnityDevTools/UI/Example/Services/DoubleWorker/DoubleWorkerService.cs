@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-namespace UnityDevTools.DependencyInjection
+﻿using UnityEngine;
+
+namespace UnityDevTools.Ui.Example
 {
     /// <summary>
     /// DoubleWorkerService.

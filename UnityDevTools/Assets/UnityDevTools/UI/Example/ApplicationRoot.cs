@@ -1,7 +1,7 @@
 ﻿using UnityUnityDevTools.DependencyInjection;
 using UnityEngine;
 
-namespace UnityDevTools.DependencyInjection
+namespace UnityDevTools.Ui.Example
 {
     /// <summary>
     /// ApplicationRoot.
@@ -11,7 +11,7 @@ namespace UnityDevTools.DependencyInjection
         #region data
 
         [SerializeField]
-        private UIManager _uiManager;
+        private UIService _uiManager;
 
         #endregion
 
