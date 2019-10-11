@@ -1,15 +1,16 @@
-﻿using DI;
+﻿using UnityDevTools.DependencyInjection;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityDI;
+using UnityUnityDevTools.DependencyInjection;
 using UnityEngine;
+
 namespace YourNamespace
 {
     /// <summary>
-    /// TestDI.
+    /// TestUnityDevTools.DependencyInjection.
     /// </summary>
-    public class TestDI : MonoBehaviour
+    public class DI : MonoBehaviour
     {
         Container container;
         private void Awake()

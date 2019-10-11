@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace UnityDI
+namespace UnityUnityDevTools.DependencyInjection
 {
     /// <summary>
     /// ServiceProviderUtility.

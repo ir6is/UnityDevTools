@@ -1,7 +1,7 @@
-﻿using UnityDI;
+﻿using UnityUnityDevTools.DependencyInjection;
 using UnityEngine;
 
-namespace DI
+namespace UnityDevTools.DependencyInjection
 {
     /// <summary>
     /// ApplicationRoot.

@@ -1,11 +1,11 @@
-﻿using DI;
+﻿using UnityDevTools.DependencyInjection;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DI
+namespace UnityDevTools.DependencyInjection
 {
     /// <summary>
     /// Controller.

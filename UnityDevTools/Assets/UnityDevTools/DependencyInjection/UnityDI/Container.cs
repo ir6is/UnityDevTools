@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UnityDI
+namespace UnityUnityDevTools.DependencyInjection
 {
     /// <summary>
     /// Container.

@@ -85,7 +85,7 @@ namespace UnityDevTools.Console
 				{
 					string newMessage = string.Format("<color=#{0}>{1}</color>\n",
 						ColorUtility.ToHtmlStringRGB(currLogViewSettings.TextColor),
-						condition);
+                        condition);
 
 					if (currLogViewSettings.ShowStack)
 					{

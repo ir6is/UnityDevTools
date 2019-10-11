@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityDI;
+using UnityUnityDevTools.DependencyInjection;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DI
+namespace UnityDevTools.DependencyInjection
 {
     /// <summary>
     /// UIManager.
@@ -50,7 +50,6 @@ namespace DI
         {
             var s = type.GetGenericArguments();
             var d = typeof(Controller<int>).GetGenericArguments();
-            Console.WriteLine();
         }
 
         #endregion

@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-namespace Common
+﻿using UnityEngine;
+
+namespace UnityDevTools.Common
 {
     public static class Vector3Utility
     {
-        public static bool Approximately(Vector3 a, Vector3 b)
+        public static bool IsApproximateExt(this Vector3 a, Vector3 b)
+        {
+            return a.IsApproximateExt(b);
+        }
+
+        public static bool IsApproximate(Vector3 a, Vector3 b)
         {
             var result = true;
 
